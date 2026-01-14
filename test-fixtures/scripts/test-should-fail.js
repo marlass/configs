@@ -88,13 +88,14 @@ function normalizeExpectedRule(rule) {
 
 /**
  * Extract triggered rules from oxlint output.
- * Parses lines like "eslint(rule-name)" or "typescript-eslint(rule-name)"
+ * Parses lines like "eslint(rule-name):" or "eslint-plugin-unicorn(rule-name):"
  */
 function extractTriggeredRules(output) {
   const rules = new Set();
 
-  // Match patterns like "x eslint(rule-name)" or "x eslint-plugin-react(jsx-key)"
-  const rulePattern = /x\s+([\w-]+)\(([\w-]+)\)/g;
+  // Match patterns like "eslint(rule-name):" or "eslint-plugin-react(jsx-key):"
+  // Format: plugin-name(rule-name): where plugin-name can contain hyphens
+  const rulePattern = /([\w][\w-]*)\(([\w-]+)\):/g;
   let match;
 
   while ((match = rulePattern.exec(output)) !== null) {
