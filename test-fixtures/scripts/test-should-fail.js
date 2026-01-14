@@ -87,18 +87,29 @@ function normalizeExpectedRule(rule) {
 }
 
 /**
+ * Strip ANSI escape codes from a string.
+ */
+function stripAnsi(str) {
+  // eslint-disable-next-line no-control-regex
+  return str.replace(/\x1b\[[0-9;]*m/g, "");
+}
+
+/**
  * Extract triggered rules from oxlint output.
  * Parses lines like "eslint(rule-name):" or "eslint-plugin-unicorn(rule-name):"
  */
 function extractTriggeredRules(output) {
   const rules = new Set();
 
+  // Strip ANSI color codes from output
+  const cleanOutput = stripAnsi(output);
+
   // Match patterns like "eslint(rule-name):" or "eslint-plugin-react(jsx-key):"
   // Format: plugin-name(rule-name): where plugin-name can contain hyphens
   const rulePattern = /([\w][\w-]*)\(([\w-]+)\):/g;
   let match;
 
-  while ((match = rulePattern.exec(output)) !== null) {
+  while ((match = rulePattern.exec(cleanOutput)) !== null) {
     const prefix = match[1];
     const ruleName = match[2];
     const normalized = normalizeTriggeredRule(prefix, ruleName);
