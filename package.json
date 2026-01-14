@@ -1,0 +1,39 @@
+{
+  "name": "@marlas/config",
+  "version": "0.0.0",
+  "description": "Various tools default configs to extend in projects",
+  "author": "Marcin Lasak",
+  "license": "MIT",
+  "type": "module",
+  "exports": {
+    ".": "./src/index.js",
+    "./oxlint": "./src/oxlint.json"
+  },
+  "files": [
+    "src"
+  ],
+  "peerDependencies": {
+    "oxlint": "^1.38.0"
+  },
+  "peerDependenciesMeta": {
+    "oxlint": {
+      "optional": true
+    }
+  },
+  "keywords": [
+    "config",
+    "configuration",
+    "oxlint",
+    "linter"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/marlas/configs.git"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "engines": {
+    "node": ">=24"
+  }
+}

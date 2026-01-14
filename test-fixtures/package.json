@@ -1,0 +1,18 @@
+{
+  "name": "test-fixtures",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --run test:pass && node --run test:fail",
+    "test:pass": "oxlint -c oxlint.json --type-aware should-pass",
+    "test:fail": "node scripts/test-should-fail.js"
+  },
+  "devDependencies": {
+    "@types/react": "^19.2.8",
+    "oxlint": "^1.38.0",
+    "oxlint-tsgolint": "^0.11.0",
+    "typescript": "^5.9.3",
+    "vitest": "^4.0.17"
+  }
+}

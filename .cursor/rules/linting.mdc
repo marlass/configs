@@ -1,0 +1,39 @@
+---
+name: linting
+description: General linting philosophy
+---
+
+# Linting
+
+Linting is the low hanging fruit to improve codebase security, structure, conventions and eliminate huge type of errors. All code should be linted. 
+
+## Configuration
+
+Linter should be initially configured with all rules enabled. Even those slightly slower (eg. type aware). Everything should be opt-in by default and exclusion should be explicit. 
+
+All problems reported by linter should be errors. Warnings should be used only for new rules which are currently reporting many problems in the current codebase. This should work as strategy for incremental adoption. In this case number of warnings should be strickly limited.
+
+Rules regarding formatting should be disabled. Sorting of imports is formatter responsibility, not the linter. Anything that conflicts with tools better suited for that checks should be left for them (eg. import sorting mentioned above).
+
+Auto-fix should be enabled for all rules that can be safely fixed. Fix is guarenteed to not change behaviour incorrectly.
+
+In monorepo each package should have it's own lint scripts in `package.json`. There could be root tool config which could be the base for all projects.
+
+## Current state of the art
+
+At the moment [Oxlint](https://oxc.rs/docs/guide/usage/linter.html) offers best combination of performance, configurability and ruleset. It also supports type aware and multi file rules.
+
+CLI options that are aligning with this philosophy:
+
+- `--fix-suggestions` - for lint with auto-fix command
+- `--max-warnings=0` - for limiting the number of available warnings. When warnings are detected which should not be warnings it should be changed in config to error.
+- `--format=github` - usefull for running linter in Github Actions and seeing errors as code annotations
+- `--report-unused-disable-directives` - to avoid having dead linter comments in the codebase
+- `--type-aware` - enable type aware rules
+
+
+## Usual scripts in project
+
+- `"lint": "oxlint --type-aware --max-warnings=0 --report-unused-disable-directives"`
+- `"lint:ci": "node --run lint -- --format=github"`
+- `"lint:fix": "node --run lint -- --fix-suggestions"`

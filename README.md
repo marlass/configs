@@ -1,2 +1,5 @@
-# configs
-Various tools default configs to extend in projects
+# `@marlas/configs`
+
+Configs for tools:
+
+- oxlint - `extends: ['@marlas/configs/oxlint']`

@@ -1,0 +1,54 @@
+{
+    "$schema": "https://raw.githubusercontent.com/oxc-project/oxc/main/npm/oxlint/configuration_schema.json",
+    "categories": {
+        "correctness": "error",
+        "suspicious": "error",
+        "pedantic": "error",
+        "perf": "error",
+        "restriction": "error",
+        "style": "off",
+        "nursery": "error"
+    },
+    "plugins": [
+        "eslint",
+        "typescript",
+        "react",
+        "react-perf",
+        "oxc",
+        "jsx-a11y",
+        "vitest",
+        "import",
+        "unicorn",
+        "jsdoc",
+        "promise",
+        "node"
+    ],
+    "rules": {
+        // These are not sensible metrics for complexity
+        "eslint/max-lines-per-function": "off",
+        "eslint/max-depth": "off",
+        "eslint/max-nested-callbacks": "off",
+        "eslint/max-lines": "off",
+        "eslint/max-statements": "off",
+        "eslint/max-params": "off",
+        // undefined has it's uses
+        "eslint/no-undefined": "off",
+        // async/await is supported almost everywhere now
+        "oxc/no-async-await": "off",
+        // React import are handled by the build tools for ergonomics
+        "react/react-in-jsx-scope": "off",
+        // JSDoc should be used for documentation, not for type checking
+        "jsdoc/require-param-type": "off",
+        "jsdoc/require-returns-type": "off",
+        "jsdoc/require-param": "off",
+        "jsdoc/require-returns": "off",
+        // Inference is good. Doesn't have to be avoided.
+        "typescript/explicit-function-return-type": "off",
+        // Inference doesn't hurt performance that much. Code structure is more important.
+        "typescript/explicit-module-boundary-types": "off",
+        // Enforce .tsx extension for React files
+        "react/jsx-filename-extension": ["error", {
+            "extensions": [".tsx"]
+        }]
+    }
+}

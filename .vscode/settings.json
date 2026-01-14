@@ -1,0 +1,10 @@
+{
+    "oxc.enable": true,
+    "oxc.fixKind": "safe_fix",
+    "oxc.typeAware": true,
+    "oxc.lint.run": "onType",
+    "oxc.tsConfigPath": "test-fixtures/tsconfig.json",
+    "oxc.configPath": "test-fixtures/oxlint.json",
+    "oxc.path.oxlint": "./test-fixtures/node_modules/oxlint/bin/oxlint",
+    "oxc.path.tsgolint": "./test-fixtures/node_modules/oxlint-tsgolint/bin/tsgolint"
+}
