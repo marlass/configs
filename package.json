@@ -5,6 +5,11 @@
   "author": "Marcin Lasak",
   "license": "MIT",
   "type": "module",
+  "scripts": {
+    "changeset": "changeset",
+    "version": "changeset version",
+    "release": "node scripts/publish.js"
+  },
   "exports": {
     ".": "./src/index.js",
     "./oxlint": "./src/oxlint.json"
@@ -28,12 +33,15 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/marlas/configs.git"
+    "url": "git+https://github.com/marlas/configs.git"
   },
   "publishConfig": {
     "access": "public"
   },
   "engines": {
     "node": ">=24"
+  },
+  "devDependencies": {
+    "@changesets/cli": "^2.29.8"
   }
 }
