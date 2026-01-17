@@ -1,5 +1,11 @@
 # @marlas/config
 
+## 0.3.0
+
+### Minor Changes
+
+- bdc5e11: fix: Adjust oxlint config rules strictness
+
 ## 0.2.2
 
 ### Patch Changes
