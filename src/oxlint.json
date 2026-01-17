@@ -6,7 +6,7 @@
         "pedantic": "error",
         "perf": "error",
         "restriction": "error",
-        "style": "off",
+        "style": "error",
         "nursery": "error"
     },
     "plugins": [
@@ -31,6 +31,20 @@
         "eslint/max-lines": "off",
         "eslint/max-statements": "off",
         "eslint/max-params": "off",
+        // Sorting keys is bad idea. Very often you want to group by purpose
+        "eslint/sort-keys": "off",
+        // Sorting imports is formatter responsibility, not the linter.
+        "eslint/sort-imports": "off",
+        // This doesn't really matter. Sometimes you want to use arrow function, sometimes you want to use function declaration.
+        "eslint/func-style": "off",
+        // Sometimes single character variables are pretty useful
+        "eslint/id-length": "off",
+        // Ternary are fine
+        "eslint/no-ternary": "off",
+        // Object.assign is more memory efficient than spread operator
+        "eslint/prefer-object-spread": "off",
+        // 0 is often use to check presence of something and -1/1 are often used in sorting
+        "eslint/no-magic-numbers": ["error", { "ignore": [0, 1, -1] }],
         // undefined has it's uses
         "eslint/no-undefined": "off",
         // async/await is supported almost everywhere now
@@ -49,6 +63,14 @@
         // Enforce .tsx extension for React files
         "react/jsx-filename-extension": ["error", {
             "extensions": [".tsx"]
-        }]
+        }],
+        // Bad idea for complexity metric
+        "react/jsx-max-depth": "off",
+        // Doesn't matter where the export is
+        "import/exports-last": "off",
+        // Grouping exports only require extra effort
+        "import/group-exports": "off",
+        // Named exports are the most ergonomic and should be used as default
+        "import/no-named-export": "off"
     }
 }

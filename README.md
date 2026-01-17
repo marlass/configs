@@ -2,4 +2,4 @@
 
 Configs for tools:
 
-- oxlint - `extends: ['@marlas/config/oxlint']`
+- oxlint - `extends: ['./node_modules/@marlas/config/src/oxlint.json']`
