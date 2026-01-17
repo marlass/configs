@@ -1,5 +1,11 @@
 # @marlas/config
 
+## 0.2.1
+
+### Patch Changes
+
+- 0a95646: chore: Adjust package.json for trusted publishing
+
 ## 0.2.0
 
 ### Minor Changes
