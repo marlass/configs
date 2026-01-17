@@ -48,7 +48,7 @@ export function processItems(items) {
  * @returns {string} Escaped regex pattern
  */
 export function escapeRegex(input) {
-  return input.replaceAll(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  return input.replaceAll(/[.*+?^${}()|[\]\\]/g, String.raw`\$&`);
 }
 
 export const CONFIG = Object.freeze({

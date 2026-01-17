@@ -25,6 +25,7 @@ interface AuthenticatedUser extends User {
  */
 export function createUser(name: string, email: string): User {
   return {
+    // oxlint-disable-next-line no-magic-numbers
     id: Math.floor(Math.random() * 10_000),
     name,
     email,
@@ -61,7 +62,7 @@ export function filterByRole(
   users: AuthenticatedUser[],
   role: UserRole,
 ): AuthenticatedUser[] {
-  return users.filter((user) => user.role === role);
+  return users.filter((user) => {return user.role === role});
 }
 
 /**

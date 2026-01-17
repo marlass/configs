@@ -3,7 +3,8 @@
  * Tests: react, react-perf, jsx-a11y plugins
  */
 
-import { type ReactNode, memo, useCallback, useMemo, useState } from "react";
+import { memo, useCallback, useMemo, useState } from 'react';
+import type { ReactNode } from 'react';
 
 interface ButtonProps {
   children: ReactNode;
@@ -49,11 +50,11 @@ export function Counter({ initialValue = 0, step = 1 }: CounterProps) {
   const [count, setCount] = useState(initialValue);
 
   const increment = useCallback(() => {
-    setCount((prev) => prev + step);
+    setCount((prev) => {return prev + step});
   }, [step]);
 
   const decrement = useCallback(() => {
-    setCount((prev) => prev - step);
+    setCount((prev) => {return prev - step});
   }, [step]);
 
   const displayValue = useMemo(() => {
@@ -85,9 +86,9 @@ interface ListProps<T> {
 export function List<T>({ items, renderItem, keyExtractor }: ListProps<T>) {
   return (
     <ul>
-      {items.map((item, index) => (
+      {items.map((item, index) => {return (
         <li key={keyExtractor(item, index)}>{renderItem(item, index)}</li>
-      ))}
+      )})}
     </ul>
   );
 }

@@ -12,12 +12,12 @@ interface Calculator {
 
 function createCalculator(): Calculator {
   return {
-    add: (a, b) => a + b,
-    subtract: (a, b) => a - b,
+    add: (a, b) => {return a + b},
+    subtract: (a, b) => {return a - b},
   };
 }
 
-describe("Calculator", () => {
+describe("calculator", () => {
   let calculator: Calculator;
 
   beforeEach(() => {
@@ -30,24 +30,29 @@ describe("Calculator", () => {
 
   describe("add", () => {
     it("should add two positive numbers", () => {
+      // oxlint-disable-next-line no-magic-numbers
       expect(calculator.add(2, 3)).toBe(5);
     });
 
     it("should add negative numbers", () => {
+      // oxlint-disable-next-line no-magic-numbers
       expect(calculator.add(-2, -3)).toBe(-5);
     });
 
     it("should handle zero", () => {
+      // oxlint-disable-next-line no-magic-numbers
       expect(calculator.add(0, 5)).toBe(5);
     });
   });
 
   describe("subtract", () => {
     it("should subtract two numbers", () => {
+      // oxlint-disable-next-line no-magic-numbers
       expect(calculator.subtract(5, 3)).toBe(2);
     });
 
     it("should return negative when second is larger", () => {
+      // oxlint-disable-next-line no-magic-numbers
       expect(calculator.subtract(3, 5)).toBe(-2);
     });
   });
@@ -63,12 +68,12 @@ async function mockFailingFetch(): Promise<never> {
   throw error;
 }
 
-describe("Async operations", () => {
+describe("async operations", () => {
   it("should handle async functions", async () => {
     const fetchData = vi.fn(mockFetch);
     const result = await fetchData();
-    expect(result).toEqual({ data: "test" });
-    expect(fetchData).toHaveBeenCalledOnce();
+    expect(result).toStrictEqual({ data: "test" });
+    expect(fetchData).toHaveBeenCalledTimes(1);
   });
 
   it("should handle rejected promises", async () => {
