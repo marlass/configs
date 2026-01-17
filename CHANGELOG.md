@@ -1,5 +1,11 @@
 # @marlas/config
 
+## 0.2.2
+
+### Patch Changes
+
+- ca1a286: chore: Adjust repo name - use github shorthand syntax
+
 ## 0.2.1
 
 ### Patch Changes
