@@ -31,10 +31,7 @@
     "oxlint",
     "linter"
   ],
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/marlas/configs.git"
-  },
+  "repository": "github:marlass/configs",
   "publishConfig": {
     "access": "public"
   },
