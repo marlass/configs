@@ -41,12 +41,18 @@
         "eslint/id-length": "off",
         // Ternary are fine
         "eslint/no-ternary": "off",
+        // Too restrictive. There are number of patterns where this is useful
+        "eslint/init-declarations": "off",
         // Object.assign is more memory efficient than spread operator
         "eslint/prefer-object-spread": "off",
         // 0 is often use to check presence of something and -1/1 are often used in sorting
         "eslint/no-magic-numbers": ["error", { "ignore": [0, 1, -1] }],
         // undefined has it's uses
         "eslint/no-undefined": "off",
+        // Usefull for modifications later on without need to wrap in parentheses
+        "eslint/arrow-body-style": ["error", "always"],
+        // Duplicates are fine for type imports
+        "eslint/no-duplicate-imports": ["error", { "allowSeparateTypeImports": true }],
         // async/await is supported almost everywhere now
         "oxc/no-async-await": "off",
         // React import are handled by the build tools for ergonomics
@@ -71,6 +77,10 @@
         // Grouping exports only require extra effort
         "import/group-exports": "off",
         // Named exports are the most ergonomic and should be used as default
-        "import/no-named-export": "off"
+        "import/no-named-export": "off",
+        // Numbers are easier to spot than strings
+        "vitest/prefer-called-once": "off",
+        // These are often usefull for eg. starting server in tests
+        "jest/no-hooks": "off"
     }
 }
