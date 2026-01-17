@@ -1,6 +1,6 @@
 {
   "name": "@marlas/config",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Various tools default configs to extend in projects",
   "author": "Marcin Lasak",
   "license": "MIT",
