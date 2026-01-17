@@ -41,18 +41,43 @@
         "eslint/id-length": "off",
         // Ternary are fine
         "eslint/no-ternary": "off",
+        // Void is fine for marking not awaitable promises
+        "eslint/no-void": "off",
+        // TODO is sometimes only future improvements. Not only non production ready code
+        "eslint/no-warning-comments": "off",
         // Too restrictive. There are number of patterns where this is useful
         "eslint/init-declarations": "off",
         // Object.assign is more memory efficient than spread operator
         "eslint/prefer-object-spread": "off",
         // 0 is often use to check presence of something and -1/1 are often used in sorting
-        "eslint/no-magic-numbers": ["error", { "ignore": [0, 1, -1] }],
+        "eslint/no-magic-numbers": [
+            "error",
+            {
+                "ignore": [
+                    0,
+                    1,
+                    -1
+                ]
+            }
+        ],
         // undefined has it's uses
         "eslint/no-undefined": "off",
         // Usefull for modifications later on without need to wrap in parentheses
-        "eslint/arrow-body-style": ["error", "always"],
+        "eslint/arrow-body-style": [
+            "error",
+            "always"
+        ],
         // Duplicates are fine for type imports
-        "eslint/no-duplicate-imports": ["error", { "allowSeparateTypeImports": true }],
+        "eslint/no-duplicate-imports": [
+            "error",
+            {
+                "allowSeparateTypeImports": true
+            }
+        ],
+        // These are useful sometimes
+        "eslint/no-inline-comments": "off",
+        // It's useful for early returns
+        "eslint/no-continue": "off",
         // async/await is supported almost everywhere now
         "oxc/no-async-await": "off",
         // React import are handled by the build tools for ergonomics
@@ -66,10 +91,22 @@
         "typescript/explicit-function-return-type": "off",
         // Inference doesn't hurt performance that much. Code structure is more important.
         "typescript/explicit-module-boundary-types": "off",
+        // Strike here for balance between strictness and concise code
+        "typescript/strict-boolean-expressions": [
+            "error",
+            {
+                "allowNullableString": true
+            }
+        ],
         // Enforce .tsx extension for React files
-        "react/jsx-filename-extension": ["error", {
-            "extensions": [".tsx"]
-        }],
+        "react/jsx-filename-extension": [
+            "error",
+            {
+                "extensions": [
+                    ".tsx"
+                ]
+            }
+        ],
         // Bad idea for complexity metric
         "react/jsx-max-depth": "off",
         // Doesn't matter where the export is
@@ -78,9 +115,33 @@
         "import/group-exports": "off",
         // Named exports are the most ergonomic and should be used as default
         "import/no-named-export": "off",
+        // Prefer named exports over default export
+        "import/prefer-default-export": "off",
+        // It is recommended to import zod as namespace for tree shaking
+        "import/no-namespace": [
+            "error",
+            {
+                "ignore": [
+                    "zod"
+                ]
+            }
+        ],
         // Numbers are easier to spot than strings
         "vitest/prefer-called-once": "off",
         // These are often usefull for eg. starting server in tests
-        "jest/no-hooks": "off"
+        "jest/no-hooks": "off",
+        // Produces false positives
+        "jest/require-hook": "off",
+        "unicorn/filename-case": [
+            "error",
+            {
+                "cases": {
+                    // for regular files
+                    "kebabCase": true,
+                    // for components
+                    "pascalCase": true
+                }
+            }
+        ]
     }
 }
